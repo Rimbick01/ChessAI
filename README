@@ -1,0 +1,17 @@
+chess engine neural net (right now it's dumb)
+
+fast MCTS tinygrad
+
+value v=f(state)
+v=(-1,0,1)(black win,draw,white win)
+board
+2(En pasant,blank)+7*2(chess piece)=16
+in chess Rook 2 (can castle)
+FEN wiki read 
+python chess
+bits encoding [log base 2(13)]=4
+//8*8*4+4(castle,En passant)=260
+//8*8*4-1(to move)=257
+8*8*5
+
+
