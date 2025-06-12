@@ -52,12 +52,3 @@ if __name__ == "__main__":
     s = State()
     #print(s.edges())
     print(s.serialized())
-
-        #for r in range(8):
-            #for c in range(8):
-                #state[r,c,0]=(bstate[r*8+c]/8)&1
-                #state[r,c,1]=(bstate[r*8+c]/4)&1
-                #state[r,c,2]=(bstate[r*8+c]/2)&1
-                #state[r,c,3]=(bstate[r*8+c]/1)&1
-        #state[self.board.ep_square,:,:,3]=1
-        #pp=self.board.shredder_fen()
