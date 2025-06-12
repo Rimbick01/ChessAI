@@ -15,7 +15,6 @@ class State(object):
         for i in range(64):
             pp=self.board.piece_at(i)
             if pp is not None:
-                #print(i,pp.symbol())
                 bstate[i]={"P":1,"N":2,"B":3,"R":4,"Q":5,"K":6,\
                            "p":9,"n":10,"b":11,"r":12,"q":13,"k":14}[pp.symbol()]
         if self.board.has_queenside_castling_rights(chess.WHITE):
