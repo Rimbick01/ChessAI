@@ -33,12 +33,12 @@ class State(object):
             assert bstate[self.board.ep_square]==0
             bstate[self.board.ep_square]=8
         bstate=bstate.reshape(8,8)
-        state=np.zeros((8,8,5),np.uint8)
-        state[:,:,0]=(bstate>>3)&1
-        state[:,:,1]=(bstate>>2)&1
-        state[:,:,2]=(bstate>>1)&1
-        state[:,:,3]=(bstate>>0)&1
-        state[:,:,4]=(self.board.turn*1.0)
+        state=np.zeros((5,8,8),np.uint8)
+        state[0]=(bstate>>3)&1
+        state[1]=(bstate>>2)&1
+        state[2]=(bstate>>1)&1
+        state[3]=(bstate>>0)&1
+        state[4]=(self.board.turn*1.0)
         return state
 
     def edges(self):
