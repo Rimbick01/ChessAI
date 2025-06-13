@@ -65,21 +65,23 @@ train_loader=torch.utils.data.DataLoader(chess_dataset,batch_size=256,shuffle=Tr
 model=Net()
 optimizer=optim.Adam(model.parameters())
 oloss=nn.MSELoss()
-device="cpu"
+device="cuda"
+model.cuda()
 model.train()
-for batch_idx, (data, target) in enumerate(train_loader):
-    target=target.unsqueeze(-1)
-    data, target = data.to(device), target.to(device)
-    data=data.float()
-    target=target.float()
-    #print(data.shape,target.shape)
-    optimizer.zero_grad()
-    output = model(data)
-    #print(output.shape)
-    loss =oloss(output, target)
-    loss.backward()
-    optimizer.step()
-    print("%d:%f"%(batch_idx,loss.item()))
+for epoch in range(100):
+    all_loss=0
+    for batch_idx, (data, target) in enumerate(train_loader):
+        target=target.unsqueeze(-1)
+        data, target = data.to(device), target.to(device)
+        data=data.float()
+        target=target.float()
+        optimizer.zero_grad()
+        output = model(data)
+        loss =oloss(output, target)
+        loss.backward()
+        optimizer.step()
+        all_loss+=loss.item()
+    print("%3d:%f"%(epoch,all_loss))
 
 
 
