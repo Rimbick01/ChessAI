@@ -14,11 +14,26 @@ class Valuator(object):
         output=model(torch.tensor(brd).float())
         return (output.data[0][0])
 
+def explore_leaves(s,v):
+    ret=[]
+    for e in s.edges():
+        s.board.push(e)
+        ret.append(v(s),e)
+        s.board.pop()
+        return ret
 
 if __name__ == "__main__":
     v=Valuator()
     s = State()
-    print(v(s))
-    for e in s.edges():
-        s.board.push(e)
-        print(e,v(s))
+    while not s.board.is_game_over():
+        l=sorted(explore_leaves(v,s)key=lambda x:x[0],reverse=s.board.turn)
+        move=l[0]
+        print(move)
+        s.board.push(move[1])
+    print(s.board.result())
+
+
+
+
+
+
