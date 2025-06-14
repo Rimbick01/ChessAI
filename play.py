@@ -6,19 +6,19 @@ from train import Net
 class Valuator(object):
     def __init__(self):
         vals=torch.load("nets/value.pth",map_location=lambda stroage, loc:stroage)
-        model=Net()
-        model.load_state_dict(vals)
+        self.model=Net()
+        self.model.load_state_dict(vals)
 
-    def __call__(self):
+    def __call__(self,s):
         brd=s.serialized()[None]
-        output=model(torch.tensor(brd).float())
-        return (output.data[0][0])
+        output=self.model(torch.tensor(brd).float())
+        return float(output.data[0][0])
 
 def explore_leaves(s,v):
     ret=[]
     for e in s.edges():
         s.board.push(e)
-        ret.append(v(s),e)
+        ret.append((v(s),e))
         s.board.pop()
         return ret
 
@@ -26,14 +26,10 @@ if __name__ == "__main__":
     v=Valuator()
     s = State()
     while not s.board.is_game_over():
-        l=sorted(explore_leaves(v,s)key=lambda x:x[0],reverse=s.board.turn)
+        l=sorted(explore_leaves(s,v),key=lambda x:x[0],reverse=s.board.turn)
         move=l[0]
         print(move)
         s.board.push(move[1])
     print(s.board.result())
-
-
-
-
 
 
