@@ -5,7 +5,7 @@ from train import Net
 
 class Valuator(object):
     def __init__(self):
-        vals=torch.load("nets/value.pth",map_location=lambda stroage, loc:stroage)
+        vals=torch.load("nets/value.pth",map_location=lambda stroage, loc:stroage,weights_only=True)
         self.model=Net()
         self.model.load_state_dict(vals)
 
