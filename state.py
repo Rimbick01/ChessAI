@@ -49,8 +49,4 @@ class State(object):
         pass
 
 if __name__ == "__main__":
-    n=Net()
     s = State()
-    #print(s.edges())
-    print(s.serialized())
-    torch.load("nets/value.pth")
