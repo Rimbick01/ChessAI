@@ -1,3 +1,21 @@
+# Dumb Chess AI 🤖♟️
+
+A "not-so-smart" chess AI that plays ~~okayish~~ moves. Perfect for learning how chess AIs work (or how they *don't* work).
+
+---
+
+## Features ✨
+- **Basic Chess Rules**: It knows how pieces move (mostly).
+- **MCTS "Strategy"**: Simulates 1000 random moves to find ~~good~~ *not illegal* plays
+- **MCTS**: Uses random simulations to guess good moves (spoiler: it’s not Stockfish).
+- **Training Data Generation**: Exports game states to train slightly less dumb AIs later.
+
+# Dumb Chess AI: Guaranteed to Disappoint ♟️🤖
+
+A "barely functional" chess bot that combines MCTS with pure chaos. Perfect for losing games spectacularly.
+
+---
+
 chess engine neural net (right now it's dumb)
 
 fast MCTS tinygrad

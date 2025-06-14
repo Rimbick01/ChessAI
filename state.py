@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 import chess
+import torch
 import numpy as np
-
+from train import Net
 class State(object):
     def __init__(self,board=None):
         if board is None:
@@ -45,9 +46,11 @@ class State(object):
         return list(self.board.legal_moves)
 
     def value(self):
-        return 0 
+        pass
 
 if __name__ == "__main__":
+    n=Net()
     s = State()
     #print(s.edges())
     print(s.serialized())
+    torch.load("nets/value.pth")
